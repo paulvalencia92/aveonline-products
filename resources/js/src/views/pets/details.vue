@@ -5,6 +5,11 @@
       <mdb-card-body>
         <mdb-card-title><b>Nombre:</b> {{ product.name }}</mdb-card-title>
         <mdb-btn size="sm" :color="product.status | statusColors">{{ product.status }}</mdb-btn>
+        <p class="my-2 text-justify"><b>Observaciones</b> {{ product.observations}}</p>
+        <p class="m-0"><b>Precio</b> {{ product.price}}</p>
+        <p class="m-0"><b>Impuesto</b> {{ product.tax}}</p>
+        <p class="m-0"><b>Cantidad</b> {{ product.amount}}</p>
+        <hr>
         <p class="lead">Acciones</p>
         <mdb-btn-group>
           <mdb-btn @click="editProduct(product)" color="primary" size="sm">Editar</mdb-btn>
