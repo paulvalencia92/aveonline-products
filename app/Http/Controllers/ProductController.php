@@ -85,7 +85,7 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         if ($product->file) {
-            if ($product->file != "product_default.png") {
+            if ($product->file != "product_default.jpg") {
                 Uploader::removeFile("products", $product->file);
             }
         }
