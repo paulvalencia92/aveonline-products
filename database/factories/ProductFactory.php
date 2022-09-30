@@ -1,33 +1,31 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+namespace Database\Factories;
 
-
-use App\Models\Product;
-use Faker\Generator as Faker;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Arr;
-
-/*
-|--------------------------------------------------------------------------
-| Model Factories
-|--------------------------------------------------------------------------
-|
-| This directory should contain each of the model factory definitions for
-| your application. Factories provide a convenient way to generate new
-| model instances for testing / seeding your application's database.
-|
-*/
-
-$factory->define(Product::class, function (Faker $faker) {
-    return [
-        'reference' => $faker->unique()->randomDigit(),
-        'name' => $faker->name,
-        'observations' => $faker->text,
-        'price' => $faker->randomFloat(),
-        'tax' => $faker->randomNumber(1),
-        'amount' => $faker->randomNumber(3),
-        'status' => Arr::random(Product::availableValues()),
-        'file' => "product_default.jpg",
-
-    ];
-});
+use App\Models\Product;
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Product>
+ */
+class ProductFactory extends Factory
+{
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition()
+    {
+        return [
+            'reference' => fake()->unique()->randomDigit(),
+            'name' => fake()->name,
+            'observations' => fake()->text,
+            'price' => fake()->randomFloat(),
+            'tax' => fake()->randomNumber(1),
+            'amount' => fake()->randomNumber(3),
+            'status' => Arr::random(Product::availableValues()),
+            'file' => "product_default.jpg",
+        ];
+    }
+}
